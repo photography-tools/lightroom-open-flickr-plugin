@@ -3,9 +3,9 @@ local LrDialogs = import 'LrDialogs'
 local LrFunctionContext = import 'LrFunctionContext'
 local LrTasks = import 'LrTasks'
 
-local logger = import 'LrLogger'( 'GPhotoAPI' )
+local logger = import 'LrLogger'( 'FlickrAPI' )
 
-require 'GPhotoAPI'
+require 'FlickrAPI'
 
 --============================================================================--
 
@@ -73,8 +73,8 @@ function GPhotoUser.login( propertyTable )
 		-- Request the frob that we need for authentication.
 		propertyTable.accountStatus = LOC "$$$/GPhoto/AccountStatus/WaitingForGPhoto=Waiting for response..."
 
-		require 'GPhotoAPI'
-        local auth = GPhotoAPI.login(context, propertyTable.consumer_key, propertyTable.consumer_secret)
+		require 'FlickrAPI'
+        local auth = FlickrAPI.login(context, propertyTable.consumer_key, propertyTable.consumer_secret)
 
 		-- If editing existing connection, make sure user didn't try to change user ID on us.
         --[[

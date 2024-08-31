@@ -1,10 +1,10 @@
 -- Lightroom SDK
 local LrDialogs = import 'LrDialogs'
-local logger = import 'LrLogger'( 'GPhotoAPI' )
+local logger = import 'LrLogger'( 'FlickrAPI' )
 logger:enable('logfile')
 
 -- GPhoto plug-in
-require 'GPhotoAPI'
+require 'FlickrAPI'
 
 --------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ function publishServiceProvider.deletePhotosFromPublishedCollection( publishSett
 	logger:trace('deletePhotosFromPublishedCollection')
 	for i, photoId in ipairs( arrayOfPhotoIds ) do
 		-- Google Photos does not provide a delete method yet.
-		-- GPhotoAPI.deletePhoto( publishSettings, { photoId = photoId, suppressErrorCodes = { [ 1 ] = true } } )
+		-- FlickrAPI.deletePhoto( publishSettings, { photoId = photoId, suppressErrorCodes = { [ 1 ] = true } } )
 		deletedCallback( photoId )
 	end
 end
@@ -72,8 +72,8 @@ function publishServiceProvider.renamePublishedCollection( publishSettings, info
 	logger:trace('renamePublishedCollection')
 	-- Google Photos does not provide an update method yet.
 	--if info.remoteId then
-	--	GPhotoAPI.refreshToken(publishSettings)
-	--  GPhotoAPI.updateAlbum(publishSettings, info.remoteId, info.name)
+	--	FlickrAPI.refreshToken(publishSettings)
+	--  FlickrAPI.updateAlbum(publishSettings, info.remoteId, info.name)
 	--end
 end
 

@@ -5,7 +5,7 @@ local LrFileUtils = import 'LrFileUtils'
 local LrPathUtils = import 'LrPathUtils'
 local LrView = import 'LrView'
 
-local logger = import 'LrLogger'( 'GPhotoAPI' )
+local logger = import 'LrLogger'( 'FlickrAPI' )
 logger:enable('logfile')
 
 -- Common shortcuts
@@ -13,7 +13,7 @@ local bind = LrView.bind
 local share = LrView.share
 
 -- GPhoto plug-in
-require 'GPhotoAPI'
+require 'FlickrAPI'
 require 'GPhotoPublishSupport'
 
 --------------------------------------------------------------------------------
@@ -211,7 +211,7 @@ function exportServiceProvider.updateExportSettings( propertyTable )
 	logger:trace("access_token: '" .. propertyTable.access_token .. "'")
 	logger:trace("refresh_token: '" .. propertyTable.refresh_token .. "'")
 
-	local access_token = GPhotoAPI.refreshToken(propertyTable)
+	local access_token = FlickrAPI.refreshToken(propertyTable)
 	if access_token then
 		propertyTable.access_token = access_token
 	end
@@ -251,7 +251,7 @@ function exportServiceProvider.processRenderedPhotos( functionContext, exportCon
 	local isDefaultCollection = publishedCollectionInfo.isDefaultCollection
 	logger:trace(string.format('processRenderedPhotos albumId:%s, isDefaultCollection: %s', albumId, isDefaultCollection))
 	if not albumId and not isDefaultCollection then
-		albumId = GPhotoAPI.findOrCreateAlbum(exportSettings, publishedCollectionInfo.name)
+		albumId = FlickrAPI.findOrCreateAlbum(exportSettings, publishedCollectionInfo.name)
 	end
 
 	local couldNotPublishBecauseFreeAccount = {}
@@ -309,7 +309,7 @@ function exportServiceProvider.processRenderedPhotos( functionContext, exportCon
 				end
 
 				-- Upload or replace the photo.
-				GPhotoPhotoId = GPhotoAPI.uploadPhoto( exportSettings, {
+				GPhotoPhotoId = FlickrAPI.uploadPhoto( exportSettings, {
 										photoId = GPhotoPhotoId,
 										albumId = albumId,
 										filePath = pathOrMessage,

@@ -11,12 +11,12 @@ branches:
 before_install:
 - source .travis/setenv_lua.sh
 script:
-- cd google-photo.lrplugin
-- sed -i.bak "s/CONSUMER_KEY = \"\"/CONSUMER_KEY = \""$CONSUMER_KEY"\"/" GPhotoAPI.lua
-- sed -i.bak "s/CONSUMER_SECRET = \"\"/CONSUMER_SECRET = \""$CONSUMER_SECRET"\"/" GPhotoAPI.lua
+- cd open-flickr.lrplugin
+- sed -i.bak "s/CONSUMER_KEY = \"\"/CONSUMER_KEY = \""$CONSUMER_KEY"\"/" FlickrAPI.lua
+- sed -i.bak "s/CONSUMER_SECRET = \"\"/CONSUMER_SECRET = \""$CONSUMER_SECRET"\"/" FlickrAPI.lua
 - for i in *.lua; do luac -o $i $i; done
 - cd ..
-- zip -r /tmp/lightroom-google-photo-plugin.zip google-photo.lrplugin
+- zip -r /tmp/lightroom-google-photo-plugin.zip open-flickr.lrplugin
 deploy:
   provider: releases
   api_key:
