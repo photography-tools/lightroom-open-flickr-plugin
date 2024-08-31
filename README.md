@@ -1,8 +1,6 @@
-# Google Photos Plugin for Adobe Photoshop Lightroom
+# Open Flickr Plugin for Adobe Photoshop Lightroom
 
-[![Build Status](https://travis-ci.org/stanaka/lightroom-google-photo-plugin.svg?branch=master)](https://travis-ci.org/stanaka/lightroom-google-photo-plugin)
-
-Google Photos Plugin make it easy to upload photos from Adobe Photoshop Lightroom to [Google Photos](https://photos.google.com/).
+This is a work in progress to modify the Google Photos plugin to work with Flickr.
 
 ## Install and Usage
 
